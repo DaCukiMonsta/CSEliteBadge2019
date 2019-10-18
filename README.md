@@ -18,8 +18,8 @@ Here is the pin to device mappings for the microcontroller chip on the board.
 |0|Unknown/Not Connected||
 |1|Unknown/Not Connected||
 |2|Unknown/Not Connected||
-|3|LCD Chip Select (CS)|High|
-|4|SD Card Chip Select (CS)|High|
+|3|LCD Chip Select (CS)|Low|
+|4|SD Card Chip Select (CS)|Low|
 |5|SPI MOSI/MCU Data Out||
 |6|SPI MISO/MCU Data In||
 |7|SPI SCK/Clock||
