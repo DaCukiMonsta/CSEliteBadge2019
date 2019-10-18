@@ -1,5 +1,5 @@
 # CDEliteBadge2019
-Reverse engineering the hackable badge from Cyber Discovery Elite 2019.
+Reverse engineering the hackable badge from CyberStart Elite 2019.
 ## DISCLAIMER
 This repo is for informational purposes only, and is sourced entirely from my own testing. None of this information is official, nor is endorsed, encouraged or supervised by Cyber Discovery or any of their affiliates. Before you do anything, make sure your badge's flash memory is backed up as writing to the chip will **destroy** any program currently on the badge. If you break something, injure yourself or others, this is because you are stupid and you should feel bad. Not my fault.
 
