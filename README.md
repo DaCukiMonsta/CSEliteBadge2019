@@ -6,6 +6,14 @@ This repo is for informational purposes only, and is sourced entirely from my ow
 By using this information you agree to these terms.
 
 Please note that this page is in active development. If something is missing, give me a shout on Discord @DaCukiMonsta#4242, or on Twitter @hastwil, and I'll see if I can help. :)
+
+## Contents
++ [Disclaimer](#disclaimer)
++ [Specs](#specs)
++ [Pinout](#pinout)
++ [LCD](#lcd)
++ [Uploading sketches](#uploading-sketches)
+
 ## Specs
 + Microcontroller: [ATMega1284P](http://ww1.microchip.com/downloads/en/devicedoc/doc8059.pdf)
 + LCD: [Midas MCCOG128064B12W-FPTLRGB](https://uk.farnell.com/midas/mccog128064b12w-fptlrgb/display-lcd-graphic-128x64-fstn/dp/2664760)
