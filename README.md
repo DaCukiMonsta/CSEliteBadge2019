@@ -93,7 +93,7 @@ static const uint8_t u8x8_d_st7565_zolen_128x64_init_seq[] = {
 };
 ```
 
-Now you can use the `U8G2_ST7565_ZOLEN_128X64_F_4W_HW_SPI u8g2(U8G2_R0, /* cs=*/ 3, /* dc=*/ 24, /* reset=*/ 26);` constructor for graphics and text, or the `U8X8_ST7565_ZOLEN_128X64_4W_HW_SPI u8x8(/* cs=*/ 3, /* dc=*/ 24, /* reset=*/ 26);` constructor for just text. However, the latter is not yet working perfectly. The image seems to be too far to the left with noise on the right-most few columns of the screen. Please note you should also include `<SPI.h>` at the start of your sketch.
+Now you can use the `U8G2_ST7565_ZOLEN_128X64_F_4W_HW_SPI u8g2(U8G2_R0, /* cs=*/ 3, /* dc=*/ 24, /* reset=*/ 26);` constructor for graphics and text, or the `U8X8_ST7565_ZOLEN_128X64_4W_HW_SPI u8x8(/* cs=*/ 3, /* dc=*/ 24, /* reset=*/ 26);` constructor for just text. However, this is not yet working perfectly. The image seems to be too far to the left with noise on the right-most few columns of the screen. Please note you should also include `<SPI.h>` at the start of your sketch.
 
 ## Uploading sketches
 Currently, there is no known way to upload sketches to the board without using the unpopulated ICSP header `J5` on the rear of the badge.
