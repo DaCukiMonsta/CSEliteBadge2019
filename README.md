@@ -48,6 +48,45 @@ Here is the pin to device mappings for the microcontroller chip on the board.
 |30|Unknown/Not Connected||
 |31|Unknown/Not Connected||
 
+## LCD
+The LCD display on the badge is a [Midas MCCOG128064B12W-FPTLRGB](https://uk.farnell.com/midas/mccog128064b12w-fptlrgb/display-lcd-graphic-128x64-fstn/dp/2664760). It has an ST7565P controller chip inside, which uses SPI. A TU2221A RGB backlight strip runs accross the bottom of the LCD, this has 4 connections to the board and is connected separately from the main LCD ribbon cable.
+
+While the backlight itself is capable of displaying any RGB colour, the backlight driving circuitry on the board (transistors Q1, Q2 and Q3 which invert the signals from the MCU making the backlight active high) limits this to only 8 colours including black. Each colour can either be on or off. This is a hardware limitation, however in theory it could be possible to use some sort of PWM to changed the percieved brightness of each colour.
+
+I could not find any LCD library which would support this LCD out-of-the-box, however it can be made to work with [@olikraus](https://github.com/olikraus)'s [u8g2lib](https://github.com/olikraus/u8g2) with some modifications. To do this, find the `u8x8_d_st7565.c` file under `~/Arduino/libraries/U8g2/src/clib`, and replace the block starting `static const uint8_t u8x8_d_st7565_zolen_128x64_init_seq[] = {` with the following:
+
+```Processing
+static const uint8_t u8x8_d_st7565_zolen_128x64_init_seq[] = {
+    
+  U8X8_START_TRANSFER(),             	/* enable chip, delay is part of the transfer start */
+  
+  U8X8_C(0x0e2),            			/* soft reset */
+  U8X8_C(0x0ae),		                /* display off */
+  U8X8_C(0x040),		                /* set display start line to 0 */
+  
+  //U8X8_C(0x0a1),		                /* ADC set to reverse */
+  U8X8_C(0x0c8),		                /* common output mode */
+  // Flipmode
+  // U8X8_C(0x0a0),		                /* ADC set to reverse */ // this has been commented out for use with MCCOG128064B12W
+  // U8X8_C(0x0c0),		                /* common output mode */
+  
+  U8X8_C(0x0a6),		                /* display normal, bit val 0: LCD pixel off. */
+  U8X8_C(0x0a2),		                /* LCD bias 1/9 */
+  U8X8_C(0x02f),		                /* all power  control circuits on (regulator, booster and follower) */
+  U8X8_CA(0x0f8, 0x000),		/* set booster ratio to 4x */
+  U8X8_C(0x027),		                /* set V0 voltage resistor ratio to max  */
+  U8X8_CA(0x081, 0x013),		/* set contrast, contrast value, EA default: 0x016 */ // this has been changed to 0x013 for use with MCCOG128064B12W
+  
+  U8X8_C(0x0ae),		                /* display off */
+  U8X8_C(0x0a5),		                /* enter powersafe: all pixel on, issue 142 */
+  
+  U8X8_END_TRANSFER(),             	/* disable chip */
+  U8X8_END()             			/* end of sequence */
+};
+```
+
+Now you can use the `U8G2_ST7565_ZOLEN_128X64_F_4W_HW_SPI u8g2(U8G2_R0, /* cs=*/ 3, /* dc=*/ 24, /* reset=*/ 26);` constructor for graphics and text, or the `U8X8_ST7565_ZOLEN_128X64_4W_HW_SPI u8x8(/* cs=*/ 3, /* dc=*/ 24, /* reset=*/ 26);` constructor for just text. However, the latter is not yet working perfectly. The image seems to be too far to the left with noise on the right-most few columns of the screen. Please note you should also include `<SPI.h>` at the start of your sketch.
+
 ## Uploading sketches
 Currently, there is no known way to upload sketches to the board without using the unpopulated ICSP header `J5` on the rear of the badge.
 
