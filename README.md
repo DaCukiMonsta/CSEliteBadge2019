@@ -20,6 +20,7 @@ Please note that this page is in active development. If something is missing, gi
 
 ## Pinout
 Here is the pin to device mappings for the microcontroller chip on the board.
+![Diagram of physical chip thanks to MCUDude](https://camo.githubusercontent.com/178242e7684d9ab642e0c43fcb64b3a0bcb5c289/68747470733a2f2f692e696d6775722e636f6d2f4b3334785a62342e6a7067)
 
 | MightyCore/Arduino Pin  | Function           | Active High/Low |
 |-------------------------|--------------------|-----------------|
