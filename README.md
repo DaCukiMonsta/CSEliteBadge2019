@@ -72,10 +72,10 @@ static const uint8_t u8x8_d_st7565_zolen_128x64_init_seq[] = {
   U8X8_C(0x0ae),		                /* display off */
   U8X8_C(0x040),		                /* set display start line to 0 */
   
-  //U8X8_C(0x0a1),		                /* ADC set to reverse */
+  U8X8_C(0x0a1),		                /* ADC set to reverse */
   U8X8_C(0x0c8),		                /* common output mode */
   // Flipmode
-  // U8X8_C(0x0a0),		                /* ADC set to reverse */ // this has been commented out for use with MCCOG128064B12W
+  // U8X8_C(0x0a0),		                /* ADC set to reverse */
   // U8X8_C(0x0c0),		                /* common output mode */
   
   U8X8_C(0x0a6),		                /* display normal, bit val 0: LCD pixel off. */
@@ -93,7 +93,7 @@ static const uint8_t u8x8_d_st7565_zolen_128x64_init_seq[] = {
 };
 ```
 
-Now you can use the `U8G2_ST7565_ZOLEN_128X64_F_4W_HW_SPI u8g2(U8G2_R0, /* cs=*/ 3, /* dc=*/ 24, /* reset=*/ 26);` constructor for graphics and text, or the `U8X8_ST7565_ZOLEN_128X64_4W_HW_SPI u8x8(/* cs=*/ 3, /* dc=*/ 24, /* reset=*/ 26);` constructor for just text. However, this is not yet working perfectly. The image seems to be too far to the left with noise on the right-most few columns of the screen. Please note you should also include `<SPI.h>` at the start of your sketch.
+Now you can use the `U8G2_ST7565_ZOLEN_128X64_F_4W_HW_SPI u8g2(U8G2_MIRROR, /* cs=*/ 3, /* dc=*/ 24, /* reset=*/ 26);` constructor for graphics and text, or the `U8X8_ST7565_ZOLEN_128X64_4W_HW_SPI u8x8(/* cs=*/ 3, /* dc=*/ 24, /* reset=*/ 26);` constructor for just text. However, in text mode the image on the screen will always appear mirrored, therefore I don't reccomend using it. Please note you should also include `<SPI.h>` at the start of your sketch in order to use hardware SPI (which the screen needs).
 
 ## Uploading sketches
 Currently, there is no known way to upload sketches to the board without using the unpopulated ICSP header `J5` on the rear of the badge.
