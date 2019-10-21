@@ -24,17 +24,17 @@ Here is the pin to device mappings for the microcontroller chip on the board.
 
 | MightyCore/Arduino Pin  | Function           | Active High/Low |
 |-------------------------|--------------------|-----------------|
-|0|Unknown/Not Connected||
-|1|Unknown/Not Connected||
-|2|Unknown/Not Connected||
+|0|Not Connected||
+|1|Not Connected||
+|2|SD Card Chip Select (CS)|Low|
 |3|LCD Chip Select (CS)|Low|
-|4|SD Card Chip Select (CS)|Low|
+|4|Not Connected||
 |5|SPI MOSI/MCU Data Out||
 |6|SPI MISO/MCU Data In||
 |7|SPI SCK/Clock||
-|8|Unknown/Not Connected||
-|9|Unknown/Not Connected||
-|10|Unknown/Not Connected||
+|8|Not Connected||
+|9|Not Connected||
+|10|Not Connected||
 |11|LED 1|High|
 |12|LED 2|High|
 |13|LED 3|High|
@@ -46,16 +46,26 @@ Here is the pin to device mappings for the microcontroller chip on the board.
 |19|Button RIGHT|Low|
 |20|Button A|Low|
 |21|Button B|Low|
-|22|Unknown/Not Connected||
-|23|Unknown/Not Connected||
+|22|Not Connected||
+|23|Not Connected||
 |24|LCD Data/Command Select (RS/A0)||
-|25|Unknown/Not Connected||
+|25|Not Connected||
 |26|LCD Reset (RST)|Low|
 |27|LCD Backlight RED|High|
 |28|LCD Backlight GREEN|High|
 |29|LCD Backlight BLUE|High|
-|30|Unknown/Not Connected||
-|31|Unknown/Not Connected||
+|30|Not Connected||
+|31|Not Connected||
+
+| Board Test Point        | Function/(MightyCore/Arduino Pin)      |
+|-------------------------|----------------------------------------|
+|TP1|Raw 3.3v Regulator Output|
+|TP2|MCU VCC (3.3v)|
+|TP3|MISO (6)|
+|TP4|GND|
+|TP5|MCU Reset|
+|TP6|MOSI (5)|
+|TP7|SCK (7)|
 
 ## LCD
 The LCD display on the badge is a [Midas MCCOG128064B12W-FPTLRGB](https://uk.farnell.com/midas/mccog128064b12w-fptlrgb/display-lcd-graphic-128x64-fstn/dp/2664760). It has an ST7565P controller chip inside, which uses SPI. A TU2221A RGB backlight strip runs accross the bottom of the LCD, this has 4 connections to the board and is connected separately from the main LCD ribbon cable.
